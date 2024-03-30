@@ -1,0 +1,29 @@
+.item {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(224, 224, 224);
+    /* justify-content: center; */
+    align-items: center;
+    /* grid-template-rows: repeat(3, 1fr); */
+}
+
+.text {
+    padding-left: 25px;
+
+}
+
+.item img {
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    padding-left: 10px;
+}
