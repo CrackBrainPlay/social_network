@@ -1,0 +1,45 @@
+.nav {
+    background-color: rgb(69, 30, 210);
+    padding-top: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
+    grid-column: 1/1;
+    grid-row: 2/2;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repear(5, 1fr);
+    grid-row-gap: 0.1em;
+    grid-auto-rows: 30px;
+    background-color: rgb(210, 30, 30);
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: stretch;
+    background-color: rgb(224, 224, 224);
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    /* position: absolute;
+    top: 15%; */
+}
+
+/* .btn {
+    color: #000000;
+    text-decoration: none;
+    border: none;
+    position: absolute;
+    top: 15%;
+} */
