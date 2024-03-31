@@ -1,3 +1,8 @@
+body>div {
+  display: inline;
+  /* height: 1800px; */
+}
+
 .roboto-regular,
 .roboto-thin,
 .roboto-light,
@@ -23,12 +28,21 @@
 }
 
 .app-wrapper {
+
   width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 6fr;
-  grid-template-rows: 90px 1fr;
+  /* grid-template-rows: 90px 1fr; */
+  grid-template-rows: 90px auto;
   grid-gap: 2px;
+}
+
+.content {
+  background-color: rgb(171, 210, 30);
+  grid-column: 2/3;
+  grid-row: 2/3;
+  /* align-items: stretch; */
 }
 
 /*

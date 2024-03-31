@@ -6,7 +6,7 @@ const Profile = () => {
     return (
         <div className={style.content} >
             <div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnhoHDIbSi0WJkzGYr6wemnCS2OzSRkhokmA&usqp=CAU" alt='' />
+                <img className={style.img} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnhoHDIbSi0WJkzGYr6wemnCS2OzSRkhokmA&usqp=CAU" alt='' />
                 {/* <div>This place have your message!!</div> */}
                 This place have your message!!
             </div>

@@ -7,7 +7,7 @@ const Header = () => {
         <header className={style.header}>
             {/* <img src={logo} alt='' /> */}
             {/* <img src="../../public/img/img2.png" alt='' /> */}
-            <img src="https://ivf-extruders.ru/images/logo.svg" alt='' />
+            <img src="img/logo.svg" alt='' />
 
         </header>
     );

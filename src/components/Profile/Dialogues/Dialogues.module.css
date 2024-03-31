@@ -1,0 +1,17 @@
+/* .item {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(3, 165, 135);
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: repeat(3, 1fr);
+} */
+
+.content {
+    background-color: rgb(171, 210, 30);
+    align-items: stretch;
+    height: 100%;
+    /* grid-column: 2/2;
+    grid-row: 2/2; */
+}
