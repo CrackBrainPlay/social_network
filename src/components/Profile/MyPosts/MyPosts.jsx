@@ -10,12 +10,12 @@ const MyPosts = () => {
                 <div className={style.item}>
                     New post
                 </div>
+                <Posts message='How ar you ?' counterLikes='15' />
+                <Posts message="It's my first post" counterLikes='4' />
+                {/* <Posts />
                 <Posts />
                 <Posts />
-                <Posts />
-                <Posts />
-                <Posts />
-                <Posts />
+                <Posts /> */}
             </div>
         </div>
     );
