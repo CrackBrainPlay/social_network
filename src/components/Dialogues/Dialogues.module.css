@@ -9,7 +9,7 @@
 } */
 
 .content {
-    background-color: rgb(171, 210, 30);
+    background-color: #f1f2f6;
     align-items: stretch;
     height: 100%;
     /* grid-column: 2/2;

@@ -1,5 +1,5 @@
 .nav {
-    background-color: rgb(69, 30, 210);
+    background-color: #f1f2f6;
     padding-top: 12px;
     padding-left: 12px;
     padding-right: 12px;
@@ -7,6 +7,9 @@
     grid-row: 2/3;
     display: inline;
     height: 800px;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgb(224, 224, 224);
     /* align-self: stretch;
     justify-self: stretch; */
 }
@@ -15,29 +18,41 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repear(5, 1fr);
-    grid-row-gap: 0.1em;
+    grid-row-gap: 5px;
     grid-auto-rows: 30px;
-    background-color: rgb(210, 30, 30);
+    /* background-color: rgb(210, 30, 30); */
+
 }
 
 .item {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 9fr;
     grid-template-rows: 1fr;
     justify-items: stretch;
-    background-color: rgb(224, 224, 224);
-    text-transform: uppercase;
+    /* background-color: rgb(224, 224, 224); */
+    /* border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(224, 224, 224); */
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(224, 224, 224);
+    /* text-transform: uppercase; */
     font-size: 18px;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-    position: relative;
-
+    /* position: relative; */
+    align-items: center;
     color: #000000;
     text-decoration: none;
-    border: none;
+    /* border: none; */
     /* position: absolute;
     top: 15%; */
+}
+
+.img {
+    height: 24px;
+    width: 24px;
 }
 
 /* .btn {

@@ -4,9 +4,9 @@ import style from './Posts.module.css';
 const Posts = (props) => {
     return (
         <div className={style.item}>
-            <img className={style.img} src='https://ivf-extruders.ru/images/logo.svg' alt='' />
+            <img className={style.img} src='img/avatar.png' alt='' />
             <div className={style.text}>{props.message}</div>
-            <div className={style.like}><span>{props.counterLikes}</span></div>
+            <div className={style.like}>&nbsp;Likes&nbsp;|&nbsp;<span>{props.counterLikes}</span>&nbsp;</div>
         </div>
     );
 }

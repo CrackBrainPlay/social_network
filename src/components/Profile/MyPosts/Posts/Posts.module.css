@@ -25,25 +25,30 @@
     grid-row: 1/3;
     border-radius: 35px;
     margin-left: 10px;
+    box-shadow: 2px 2px 3px #90909083;
     /* margin-top: 5px; */
 }
 
 .text {
-    background-color: rgb(225, 255, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
     align-self: stretch;
+    box-shadow: 2px 2px 3px #90909083;
     /* margin: 5px; */
     margin-top: 5px;
     margin-right: 5px;
     /* margin-left: 25px; */
     margin-bottom: 5px;
-    padding-left: 25px;
-    padding-top: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
     grid-column: 2/2;
     grid-row: 1/2;
 }
 
 .like {
-    background-color: rgb(38, 0, 255);
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    box-shadow: 2px 2px 3px #90909083;
     grid-column: 2/2;
     grid-row: 2/3;
     justify-self: end;

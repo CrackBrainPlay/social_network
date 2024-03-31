@@ -32,10 +32,13 @@ body>div {
   width: 1200px;
   margin: 0 auto;
   display: grid;
+  background-color: #f1f2f6;
   grid-template-columns: 1fr 6fr;
   /* grid-template-rows: 90px 1fr; */
   grid-template-rows: 90px auto;
-  grid-gap: 2px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px #90909083;
+  /* grid-gap: 2px; */
 }
 
 .content {
