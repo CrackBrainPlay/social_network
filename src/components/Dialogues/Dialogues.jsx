@@ -3,50 +3,41 @@ import style from './Dialogues.module.css';
 import { NavLink } from 'react-router-dom';
 import PersonProfile from './PersonProfile/PersonProfile';
 
+const DialogItem = (props) => {
+    let path = "/Dialogues/" + props.itemLink;
+    return (
+        <div className={style.item}>
+            <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to={path}>
+                <PersonProfile personName={props.itemName} />
+            </NavLink>
+        </div>
+    );
+}
+
+const Message = (props) => {
+    return (
+        <div className={style.message}>{props.text}</div>
+    );
+}
+
 const Dialogues = (props) => {
     return (
         <div className={style.dialogs} >
             <div className={style.dialogs_items} >
-                <div className={style.item}>
-                    {/* <img className={style.img} src='img/avatar.png' alt='Profile' />
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to="/Dialogues">
-                        &nbsp;Петя
-                    </NavLink> */}
-
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to='/Dialogues/1'>
-                        <PersonProfile personName='Petr' />
-                    </NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to='/Dialogues/2'>
-                        <PersonProfile personName='Stas' />
-                    </NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to='/Dialogues/3'>
-                        <PersonProfile personName='Sasha' />
-                    </NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to='/Dialogues/4'>
-                        <PersonProfile personName='Masha' />
-                    </NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to='/Dialogues/5'>
-                        <PersonProfile personName='Pasha' />
-                    </NavLink>
-                </div>
-                <div className={style.item}>
-                    <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to="/Dialogues/6">
-                        <PersonProfile personName='Dima' />
-                    </NavLink>
-                </div>
+                <DialogItem itemName='Petr' itemLink='1' />
+                <DialogItem itemName='Stas' itemLink='2' />
+                <DialogItem itemName='Sasha' itemLink='3' />
+                <DialogItem itemName='Masha' itemLink='4' />
+                <DialogItem itemName='Pasha' itemLink='5' />
+                <DialogItem itemName='Dima' itemLink='6' />
             </div>
             <div className={style.messages}>
-                <div className={style.message}>Hello</div>
+                <Message text='Hello' />
+                <Message text='How are you?' />
+                <Message text='Why do you not answer me?' />
+                {/* <div className={style.message}>Hello</div>
                 <div className={style.message}>How are you?</div>
-                <div className={style.message}>Why do you not answer me?</div>
+                <div className={style.message}>Why do you not answer me?</div> */}
             </div>
         </div>
     );

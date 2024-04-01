@@ -1,15 +1,12 @@
 import React from 'react';
 import style from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = () => {
     return (
         <div className={style.content} >
-            <div>
-                <img className={style.img} src="img/avatar.png" alt='' />
-                {/* <div>This place have your message!!</div> */}
-                This place have your message!!
-            </div>
+            <ProfileInfo />
             <MyPosts />
         </div>
     );
