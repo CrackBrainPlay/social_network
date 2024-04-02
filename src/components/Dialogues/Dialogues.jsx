@@ -1,24 +1,25 @@
 import React from 'react';
 import style from './Dialogues.module.css';
-import { NavLink } from 'react-router-dom';
-import PersonProfile from './PersonProfile/PersonProfile';
+// import { NavLink } from 'react-router-dom';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
 
-const DialogItem = (props) => {
-    let path = "/Dialogues/" + props.id;
-    return (
-        <div className={style.item}>
-            <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to={path}>
-                <PersonProfile personName={props.itemName} />
-            </NavLink>
-        </div>
-    );
-}
+// const DialogItem = (props) => {
+//     let path = "/Dialogues/" + props.id;
+//     return (
+//         <div className={style.item}>
+//             <NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to={path}>
+//                 <PersonProfile personName={props.itemName} />
+//             </NavLink>
+//         </div>
+//     );
+// }
 
-const Message = (props) => {
-    return (
-        <div className={style.message}>{props.text}</div>
-    );
-}
+// const Message = (props) => {
+//     return (
+//         <div className={style.message}>{props.text}</div>
+//     );
+// }
 
 const Dialogues = (props) => {
 
