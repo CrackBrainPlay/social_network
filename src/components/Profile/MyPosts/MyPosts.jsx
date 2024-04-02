@@ -10,6 +10,9 @@ const MyPosts = () => {
         { id: 3, text: 'Why do you not answer me?', counterLikes: 76 }
     ]
 
+    let postsElement = postsData
+        .map(post => (<Posts message={post.text} counterLikes={post.counterLikes} />))
+
     return (
         <div className={style.content} >
             <div className={style.item}>
@@ -17,9 +20,10 @@ const MyPosts = () => {
                 <div className={style.item}>
                     New post
                 </div>
-                <Posts message={postsData[0].text} counterLikes={postsData[0].counterLikes} />
+                {postsElement}
+                {/* <Posts message={postsData[0].text} counterLikes={postsData[0].counterLikes} />
                 <Posts message={postsData[1].text} counterLikes={postsData[1].counterLikes} />
-                <Posts message={postsData[2].text} counterLikes={postsData[2].counterLikes} />
+                <Posts message={postsData[2].text} counterLikes={postsData[2].counterLikes} /> */}
                 {/* <Posts />
                 <Posts />
                 <Posts />
