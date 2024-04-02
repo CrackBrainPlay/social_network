@@ -11,7 +11,7 @@ import Settings from './components/Settings/Settings';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
-const App = () => {
+const App = (props) => {
   return (
     <BrowserRouter>
 
@@ -21,8 +21,9 @@ const App = () => {
 
         <div className={style.content}>
           <Routes>
-            <Route path="Profile/*" element={<Profile />} />
-            <Route path="Dialogues/*" element={<Dialogues />} />
+            {/* <Route path="Profile/*" element={<Profile />} /> */}
+            <Route path="Profile/*" element={<Profile postsData={props.postsData} />} />
+            <Route path="Dialogues/*" element={<Dialogues dialogsData={props.dialogsData} massagesData={props.massagesData} />} />
             <Route path="News/*" element={<News />} />
             <Route path="Music/*" element={<Music />} />
             <Route path="Settings/*" element={<Settings />} />
