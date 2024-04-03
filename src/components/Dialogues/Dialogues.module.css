@@ -40,10 +40,15 @@
 .item a.activeLink {
     border-radius: 10px;
     box-shadow: 2px 2px 3px #90909083;
+    color: #AE0018;
+}
+
+.activeLink {
+    color: #AE0018;
 }
 
 .item a:hover {
-    /* color: #AE0018; */
+    color: #AE0018;
     border-radius: 10px;
     box-shadow: 2px 2px 3px #90909083;
 }
