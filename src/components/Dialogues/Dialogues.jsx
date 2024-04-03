@@ -6,12 +6,11 @@ import Message from './Message/Message';
 
 const Dialogues = (props) => {
 
-    let dialogsElements = props.dialogsData
+    let dialogsElements = props.messagesPage.dialogsData
         .map(dialog => (<DialogItem itemName={dialog.name} id={dialog.id} />))
 
-    let massagesElements = props.massagesData
+    let massagesElements = props.messagesPage.massagesData
         .map(massage => (<Message text={massage.text} id={massage.id} />))
-
     return (
         <div className={style.dialogs} >
             <div className={style.dialogs_items} >

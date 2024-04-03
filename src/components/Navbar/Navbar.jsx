@@ -1,8 +1,9 @@
 import React from 'react';
 import style from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
+import SideBar from './Sidebar/SideBar';
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className={style.nav}>
             <div className={style.box}>
@@ -12,7 +13,9 @@ const Navbar = () => {
                 <div className={style.item}><img className={style.img} src='img/music.png' alt='Music' /><NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to="Music">&nbsp;Music</NavLink></div>
                 <br></br>
                 <div className={style.item}><img className={style.img} src='img/settings.png' alt='Settings' /><NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to="Settings">&nbsp;Settings</NavLink></div>
-
+                {/* <div className={style.item}><SideBar dialogsData={props.dialogsData}/></div> */}
+                <br></br>
+                <div className={style.side}><SideBar profilePerson={props.profilePerson} /></div>
             </div>
         </nav>
     );
