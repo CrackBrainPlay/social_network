@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state from './Redux/State.js';
+import state, { addPost } from './Redux/State.js';
 import { BrowserRouter } from 'react-router-dom';
+
+// addPost('Hello i am the best player');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App state={state} />
+      <App state={state} addPost={addPost} />
     </BrowserRouter>
   </React.StrictMode>
 );

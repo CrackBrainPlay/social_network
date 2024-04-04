@@ -2,13 +2,14 @@ import React from 'react';
 import style from './AddPost.module.css';
 // import { NavLink } from 'react-router-dom';  
 
-const AddPost = () => {
+const AddPost = (props) => {
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
         let text = newPostElement.current.value;
-        alert(text);
+        // alert(text);
+        props.addPost(text);
     }
     return (
         <div>
@@ -16,7 +17,7 @@ const AddPost = () => {
                 <textarea className={style.dialogs_items} ref={newPostElement}></textarea>
             </div>
             <div>
-                <button className={style.item} onClick={addPost}>Add post</button>
+                <button className={style.item} onClick={addPost}>Add Post</button>
             </div>
         </div>
     )
