@@ -13,7 +13,6 @@ import { Routes, Route } from 'react-router-dom';
 
 const App = (props) => {
   return (
-    // <BrowserRouter>
     <div className='app-wrapper'>
       <Header />
       <Navbar profilePerson={props.state.messagesPage} />
@@ -26,11 +25,8 @@ const App = (props) => {
           <Route path="Settings/*" element={<Settings />} />
         </Routes>
       </div>
-
       <footer></footer>
     </div>
-
-    // </BrowserRouter>
   );
 }
 
