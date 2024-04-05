@@ -1,8 +1,9 @@
 import reportWebVitals from './reportWebVitals';
-import state, { addPost } from './Redux/State.js';
+// import state, { addPost, updateNewPostText } from './Redux/State.js';
+import state from './Redux/State.js';
 import { rerenderEntireTree } from './Render.js';
 
-rerenderEntireTree(state, addPost);
+rerenderEntireTree(state);
 
 
 
