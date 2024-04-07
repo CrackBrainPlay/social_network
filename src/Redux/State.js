@@ -1,31 +1,4 @@
 let store = {
-    _subscribe(observer) {
-        this._callSubscriber = observer;
-    },
-    _callSubscriber() {
-
-    },
-
-    addPost() {
-        let newPost = { id: 5, text: this._state.profilePage.newPostText, counterLikes: 0 };
-        this._state.profilePage.postsData.unshift(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    updateNewPostText(newText) {
-
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
-    subscribe(observer) {
-        this._callSubscriber = observer;
-    },
-
-    getState() {
-        return this._state;
-    },
 
     _state: {
         profilePage: {
@@ -49,7 +22,35 @@ let store = {
                 { id: 3, text: 'How are you?' },
                 { id: 4, text: 'Why do you not answer me?' }]
         }
+    },
+
+    _subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+    _callSubscriber() {
+
+    },
+
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
+
+    getState() {
+        return this._state;
+    },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            let newPost = { id: 5, text: this._state.profilePage.newPostText, counterLikes: 0 };
+            this._state.profilePage.postsData.unshift(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        }
     }
+
 }
 
 export default store;

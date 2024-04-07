@@ -20,7 +20,7 @@ const Dialogues = (props) => {
             <div className={style.messages}>
                 {massagesElements}
                 <div>
-                    <AddPost newPostText={props.newPostText} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />
+                    <AddPost newPostText={props.newPostText} dispatch={props.dispatch} />
                 </div>
             </div>
         </div>
