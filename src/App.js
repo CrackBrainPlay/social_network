@@ -8,7 +8,7 @@ import Dialogues from './components/Dialogues/Dialogues';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { addPost, updateNewPostText } from './Redux/State.js';
+// import { addPost, updateNewPostText } from './Redux/State.js';
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -19,8 +19,8 @@ const App = (props) => {
       <Navbar profilePerson={props.state.messagesPage} />
       <div className={style.content}>
         <Routes>
-          <Route path="Profile/*" element={<Profile postsPage={props.state.profilePage} addPost={addPost} updateNewPostText={updateNewPostText} />} />
-          <Route path="Dialogues/*" element={<Dialogues messagesPage={props.state.messagesPage} addPost={props.addPost} />} />
+          <Route path="Profile/*" element={<Profile postsPage={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
+          <Route path="Dialogues/*" element={<Dialogues messagesPage={props.state.messagesPage} addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} />
           <Route path="News/*" element={<News />} />
           <Route path="Music/*" element={<Music />} />
           <Route path="Settings/*" element={<Settings />} />
