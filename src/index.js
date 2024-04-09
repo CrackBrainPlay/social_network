@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-// import state, { addPost, updateNewPostText, subscribe } from './Redux/State.js';
 import store from './Redux/State.js';
+// import state, { addPost, updateNewPostText, subscribe } from './Redux/State.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
