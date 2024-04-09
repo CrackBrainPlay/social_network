@@ -3,7 +3,8 @@ import style from './Dialogues.module.css';
 // import { NavLink } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
-import AddPost from '../AllComponents/AddPost';
+// import AddPost from '../AllComponents/AddPost';
+import AddMessage from '../AllComponents/AddMessage/AddMessage';
 
 const Dialogues = (props) => {
 
@@ -20,7 +21,7 @@ const Dialogues = (props) => {
             <div className={style.messages}>
                 {massagesElements}
                 <div>
-                    <AddPost newPostText={props.newPostText} dispatch={props.dispatch} />
+                    <AddMessage newPostText={props.newMessageText} dispatch={props.dispatch} />
                 </div>
             </div>
         </div>

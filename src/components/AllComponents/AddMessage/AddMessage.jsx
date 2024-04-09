@@ -1,22 +1,21 @@
 import React from 'react';
-import style from './AddPost.module.css';
-import { addPostActionCreator, onPostChangeActionCreator } from '../../Redux/State';
+import style from './AddMessage.module.css';
+import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/State';
 // import { useParams } from 'react-router-dom';
 
 
 
-const AddPost = (props) => {
+const AddMessage = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let addMessage = () => {
+        props.dispatch(addMessageActionCreator());
     }
-
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        let action = onPostChangeActionCreator(text);
+        let action = onMessageChangeActionCreator(text);
         props.dispatch(action);
         console.log(text);
     }
@@ -27,11 +26,11 @@ const AddPost = (props) => {
                 <textarea className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
             </div>
             <div>
-                <button className={style.item} onClick={addPost}>Add Post</button>
+                <button className={style.item} onClick={addMessage}>Add Post</button>
             </div>
         </div>
     )
 
 };
 
-export default AddPost;
+export default AddMessage;
