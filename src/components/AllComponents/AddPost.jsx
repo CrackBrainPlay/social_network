@@ -26,7 +26,7 @@ const AddPost = (props) => {
             <div className={style.dialogs}>
                 <textarea className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
             </div>
-            <div>
+            <div className={style.box}>
                 <button className={style.item} onClick={addPost}>Add Post</button>
             </div>
         </div>

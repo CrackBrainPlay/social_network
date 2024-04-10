@@ -23,7 +23,7 @@ const AddMessage = (props) => {
     return (
         <div>
             <div className={style.dialogs}>
-                <textarea className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+                <textarea placeholder='Enter your message...' className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
             </div>
             <div>
                 <button className={style.item} onClick={addMessage}>Add Post</button>
