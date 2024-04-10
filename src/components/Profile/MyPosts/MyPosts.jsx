@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './MyPosts.module.css';
 import Posts from './Posts/Posts';
-import AddPost from '../../AllComponents/AddPost';
+import AddPost from '../../AllComponents/AddPost/AddPost';
 
 const MyPosts = (props) => {
     let postsElement = props.postsData
@@ -14,7 +14,9 @@ const MyPosts = (props) => {
                 <div className={style.item}>
                     New post
                 </div>
-                <AddPost newPostText={props.newPostText} dispatch={props.dispatch} />
+                <AddPost
+                    newPostText={props.newPostText}
+                    dispatch={props.dispatch} />
                 {postsElement}
             </div>
         </div>

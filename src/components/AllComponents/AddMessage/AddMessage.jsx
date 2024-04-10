@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './AddMessage.module.css';
-import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/State';
+import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/messagesReducer';
 // import { useParams } from 'react-router-dom';
 
 

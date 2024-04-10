@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './AddPost.module.css';
-import { addPostActionCreator, onPostChangeActionCreator } from '../../../Redux/State';
+import { addPostActionCreator, onPostChangeActionCreator } from '../../../Redux/profileReducer';
 // import { useParams } from 'react-router-dom';
 
 
@@ -24,7 +24,11 @@ const AddPost = (props) => {
     return (
         <div>
             <div className={style.dialogs}>
-                <textarea placeholder='Enter your message...' className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+                <textarea placeholder='Enter your message...'
+                    className={style.dialogs_items}
+                    onChange={onPostChange}
+                    ref={newPostElement}
+                    value={props.newPostText} />
             </div>
             <div className={style.box}>
                 <button className={style.item} onClick={addPost}>Add Post</button>

@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+import profileReducer from './profileReducer';
+import messagesReducer from './messagesReducer';
+import sideReducer from './sideReducer';
 
 let store = {
 
@@ -46,44 +45,11 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = { id: 5, text: this._state.profilePage.newPostText, counterLikes: 0 };
-            this._state.profilePage.postsData.unshift(newPost);
-            debugger;
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === ADD_MESSAGE) {
-            let newMessage = { id: 6, text: this._state.messagesPage.newMessageText };
-            this._state.messagesPage.massagesData.push(newMessage);
-            debugger;
-            this._state.messagesPage.newMessageText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.messagesPage.newMessageText = action.newText;
-            this._callSubscriber(this._state);
-        }
-
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
+        this._state.sideBar = sideReducer(this._state.sideBar, action);
+        this._callSubscriber(this._state);
     }
 }
-
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
-
-export const onPostChangeActionCreator = (text) =>
-({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-})
-
-export const onMessageChangeActionCreator = (text) =>
-({
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newText: text
-})
-
 
 export default store;
