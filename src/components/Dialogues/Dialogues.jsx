@@ -21,7 +21,9 @@ const Dialogues = (props) => {
             <div className={style.messages}>
                 {massagesElements}
                 <div>
-                    <AddMessage newPostText={props.newMessageText} dispatch={props.dispatch} />
+                    <AddMessage
+                        newMessageText={props.messagesPage.newMessageText}
+                        dispatch={props.dispatch} />
                 </div>
             </div>
         </div>

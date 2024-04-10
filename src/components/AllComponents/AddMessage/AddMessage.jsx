@@ -13,7 +13,7 @@ const AddMessage = (props) => {
         props.dispatch(addMessageActionCreator());
     }
 
-    let onPostChange = () => {
+    let onMessageChange = () => {
         let text = newPostElement.current.value;
         let action = onMessageChangeActionCreator(text);
         props.dispatch(action);
@@ -23,7 +23,11 @@ const AddMessage = (props) => {
     return (
         <div>
             <div className={style.dialogs}>
-                <textarea placeholder='Enter your message...' className={style.dialogs_items} onChange={onPostChange} ref={newPostElement} value={props.newPostText} />
+                <textarea placeholder='Enter your message...'
+                    className={style.dialogs_items}
+                    onChange={onMessageChange}
+                    ref={newPostElement}
+                    value={props.newMessageText} />
             </div>
             <div>
                 <button className={style.item} onClick={addMessage}>Add Post</button>

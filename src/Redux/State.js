@@ -49,15 +49,17 @@ let store = {
         if (action.type === ADD_POST) {
             let newPost = { id: 5, text: this._state.profilePage.newPostText, counterLikes: 0 };
             this._state.profilePage.postsData.unshift(newPost);
+            debugger;
             this._state.profilePage.newPostText = '';
             this._callSubscriber(this._state);
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
         } else if (action.type === ADD_MESSAGE) {
-            let newMessage = { id: 5, text: this._state.messagesPage.newMessageText };
+            let newMessage = { id: 6, text: this._state.messagesPage.newMessageText };
             this._state.messagesPage.massagesData.push(newMessage);
-            this._state.newMessageText = '';
+            debugger;
+            this._state.messagesPage.newMessageText = '';
             this._callSubscriber(this._state);
         } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.messagesPage.newMessageText = action.newText;
