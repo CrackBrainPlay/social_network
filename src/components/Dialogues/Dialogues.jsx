@@ -9,10 +9,10 @@ import AddMessageContainer from './AddMessage/AddMessageContainer';
 
 const Dialogues = (props) => {
 
-    let dialogsElements = props.messagesPage.dialogsData
+    let dialogsElements = props.store.getState().messagesPage.dialogsData
         .map(dialog => (<DialogItem itemName={dialog.name} id={dialog.id} />))
 
-    let massagesElements = props.messagesPage.massagesData
+    let massagesElements = props.store.getState().messagesPage.massagesData
         .map(massage => (<Message text={massage.text} id={massage.id} />))
     return (
         <div className={style.dialogs} >
