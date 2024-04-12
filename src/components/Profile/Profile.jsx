@@ -4,12 +4,14 @@ import MyPosts from './MyPosts/MyPosts';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 const Profile = (props) => {
+    // debugger;
     return (
         <div className={style.content} >
             <ProfileInfo />
-            <MyPosts postsData={props.postsPage.postsData}
+            <MyPosts store={props.store} />
+            {/* <MyPosts postsData={props.postsPage.postsData}
                 newPostText={props.postsPage.newPostText}
-                dispatch={props.dispatch} />
+                dispatch={props.dispatch} /> */}
         </div>
     );
 }

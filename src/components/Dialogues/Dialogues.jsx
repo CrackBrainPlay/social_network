@@ -4,7 +4,8 @@ import style from './Dialogues.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 // import AddPost from '../AllComponents/AddPost';
-import AddMessage from '../AllComponents/AddMessage/AddMessage';
+// import AddMessage from './AddMessage/AddMessage';
+import AddMessageContainer from './AddMessage/AddMessageContainer';
 
 const Dialogues = (props) => {
 
@@ -21,9 +22,10 @@ const Dialogues = (props) => {
             <div className={style.messages}>
                 {massagesElements}
                 <div>
-                    <AddMessage
+                    <AddMessageContainer store={props.store} />
+                    {/* <AddMessage
                         newMessageText={props.messagesPage.newMessageText}
-                        dispatch={props.dispatch} />
+                        dispatch={props.dispatch} /> */}
                 </div>
             </div>
         </div>

@@ -1,24 +1,25 @@
 import React from 'react';
 import style from './AddPost.module.css';
-import { addPostActionCreator, onPostChangeActionCreator } from '../../../Redux/profileReducer';
+// import { addPostActionCreator, onPostChangeActionCreator } from '../../../Redux/profileReducer';
 // import { useParams } from 'react-router-dom';
 
 
 
 const AddPost = (props) => {
-
+    debugger;
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
+        // props.dispatch(addPostActionCreator());
     }
 
 
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        let action = onPostChangeActionCreator(text);
-        props.dispatch(action);
-        console.log(text);
+        props.updateNewPostText(text);
+        // let action = onPostChangeActionCreator(text);
+        // props.dispatch(action);
     }
 
     return (
@@ -31,7 +32,7 @@ const AddPost = (props) => {
                     value={props.newPostText} />
             </div>
             <div className={style.box}>
-                <button className={style.item} onClick={addPost}>Add Post</button>
+                <button className={style.item} onClick={onAddPost}>Add Post</button>
             </div>
         </div>
     )
