@@ -7,9 +7,10 @@
     display: grid;
     grid-template-columns: 2fr 8fr;
     grid-template-rows: 780px;
+
+
 }
 
-/* 
 .dialogs_items {
     display: grid;
     grid-column: 1/2;
@@ -42,6 +43,7 @@
 }
 
 .item a:hover {
+    /* color: #AE0018; */
     border-radius: 10px;
     box-shadow: 2px 2px 3px #90909083;
 }
@@ -77,4 +79,4 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     box-shadow: 2px 2px 3px #90909083;
-} */
+}

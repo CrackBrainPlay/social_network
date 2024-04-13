@@ -1,27 +1,24 @@
-import React from 'react';
-// import style from './AddMessage.module.css';
 import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/messagesReducer';
 import AddMessage from './AddMessage';
+import { connect } from 'react-redux';
 
-const AddMessageContainer = (props) => {
-
-    let state = props.store.getState();
-
-    let addMessage = () => {
-        props.store.dispatch(addMessageActionCreator());
+const mapStateToProps = (state) => {
+    return {
+        newMessageText: state.messagesPage.newMessageText
     }
+}
 
-    let onMessageChange = (text) => {
-        let action = onMessageChangeActionCreator(text);
-        props.store.dispatch(action);
+const mapDipatchToProps = (dispatch) => {
+    return {
+        addMessage: () => {
+            dispatch(addMessageActionCreator());
+        },
+        onMessageChange: (text) => {
+            dispatch(onMessageChangeActionCreator(text));
+        }
     }
+}
 
-    return (<AddMessage addMessage={addMessage}
-        onMessageChange={onMessageChange}
-        newMessageText={state.messagesPage.newMessageText} />
-
-    )
-
-};
+const AddMessageContainer = connect(mapStateToProps, mapDipatchToProps)(AddMessage);
 
 export default AddMessageContainer;

@@ -1,11 +1,9 @@
 import React from 'react';
 import style from './MyPosts.module.css';
-// import Posts from './Posts/Posts';
-// import AddPost from '../../AllComponents/AddPost/AddPost';
 import AddPostContainer from './AddPost/AddPostContainer';
-import OutputPosts from './OutputPosts/OutputPosts';
+import OutputPostsContainer from './OutputPosts/OutputPostsContainer';
 
-const MyPosts = (props) => {
+const MyPosts = () => {
     return (
         <div className={style.content} >
             <div className={style.item}>
@@ -13,12 +11,8 @@ const MyPosts = (props) => {
                 <div className={style.item}>
                     New post
                 </div>
-                {/* <AddPostContainer store={props.store}
-                    newPostText={props.newPostText}
-                    dispatch={props.dispatch} /> */}
-                <AddPostContainer store={props.store} />
-                <OutputPosts postsData={props.store.getState().profilePage.postsData} />
-                {/* <OutputPosts postsData={props.postsData} /> */}
+                <AddPostContainer />
+                <OutputPostsContainer />
             </div>
         </div>
     );

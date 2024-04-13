@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import SideBar from './Sidebar/SideBar';
+import SideBarContainer from './Sidebar/SideBarContainer';
 
 const Navbar = (props) => {
     return (
@@ -15,7 +15,7 @@ const Navbar = (props) => {
                 <div className={style.item}><img className={style.img} src='img/settings.png' alt='Settings' /><NavLink className={({ isActive }) => isActive ? style.activeLink : ''} to="Settings">&nbsp;Settings</NavLink></div>
                 {/* <div className={style.item}><SideBar dialogsData={props.dialogsData}/></div> */}
                 <br></br>
-                <div className={style.side}><SideBar profilePerson={props.profilePerson} /></div>
+                <div className={style.side}><SideBarContainer /></div>
             </div>
         </nav>
     );

@@ -1,14 +1,10 @@
 import React from 'react';
 import style from './SideBar.module.css';
 import ProfileBox from './ProfileBox/ProfileBox'
-import store from './../../../Redux/store';
-
-let state = store.getState();
 
 const SideBar = (props) => {
 
-    // let profileElements = props.profilePerson.dialogsData
-    let profileElements = state.messagesPage.dialogsData
+    let profileElements = props.dialogsData
         .slice(0, 3).map(person => (<ProfileBox itemName={person.name} id={person.id} />))
 
     return (
