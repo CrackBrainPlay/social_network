@@ -8,7 +8,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDipatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         addMessage: () => {
             dispatch(addMessageActionCreator());
@@ -19,6 +19,6 @@ const mapDipatchToProps = (dispatch) => {
     }
 }
 
-const AddMessageContainer = connect(mapStateToProps, mapDipatchToProps)(AddMessage);
+const AddMessageContainer = connect(mapStateToProps, mapDispatchToProps)(AddMessage);
 
 export default AddMessageContainer;

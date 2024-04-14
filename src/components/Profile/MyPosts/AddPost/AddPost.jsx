@@ -6,7 +6,7 @@ import style from './AddPost.module.css';
 
 
 const AddPost = (props) => {
-    debugger;
+    // debugger;
     let newPostElement = React.createRef();
 
     let onAddPost = () => {
