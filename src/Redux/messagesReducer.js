@@ -18,25 +18,36 @@ let initialState = {
 }
 
 const messagesReducer = (state = initialState, action) => {
+
     switch (action.type) {
 
-        case ADD_MESSAGE: {
-            let newMessage = { id: 5, text: state.newMessageText };
-            let stateCopy = { ...state };
-            stateCopy.massagesData = [...state.massagesData];
-            stateCopy.massagesData.push(newMessage);
-            stateCopy.newMessageText = '';
-            // state.massagesData.push(newMessage);
-            // state.newMessageText = '';
-            return stateCopy;
-        }
+        // case ADD_MESSAGE: {
+        //     let newMessage = state.newMessageText;
+        //     let stateCopy = {
+        //         ...state,
+        //         newMessageText: '',
+        //         massagesData: [...state.massagesData, { id: state.massagesData.length + 1, text: newMessage }]
+        //     };
+        //     return stateCopy;
+        // }
+        case ADD_MESSAGE:
+            let newMessage = state.newMessageText;
+            return {
+                ...state,
+                newMessageText: '',
+                massagesData: [...state.massagesData, { id: state.massagesData.length + 1, text: newMessage }]
+            };
 
-        case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = { ...state };
-            stateCopy.newMessageText = action.newText;
-            // state.newMessageText = action.newText;
-            return stateCopy;
-        }
+        // case UPDATE_NEW_MESSAGE_TEXT: {
+        //     let stateCopy = { ...state };
+        //     stateCopy.newMessageText = action.newText;
+        //     return stateCopy;
+        // }
+        case UPDATE_NEW_MESSAGE_TEXT:
+            return {
+                ...state,
+                newMessageText: action.newText
+            };
 
         default:
             return state;
