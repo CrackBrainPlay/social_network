@@ -31,7 +31,7 @@ const messagesReducer = (state = initialState, action) => {
         //     return stateCopy;
         // }
         case ADD_MESSAGE:
-            let newMessage = state.newMessageText;
+            const newMessage = state.newMessageText;
             return {
                 ...state,
                 newMessageText: '',
