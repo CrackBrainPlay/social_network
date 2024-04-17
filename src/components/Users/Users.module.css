@@ -1,4 +1,10 @@
-.box {}
+.box {
+    display: grid;
+}
+
+.selectedPage {
+    font-weight: 600;
+}
 
 .box img {
     height: 100px;
