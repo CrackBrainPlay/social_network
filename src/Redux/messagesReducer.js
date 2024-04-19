@@ -21,15 +21,6 @@ const messagesReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        // case ADD_MESSAGE: {
-        //     let newMessage = state.newMessageText;
-        //     let stateCopy = {
-        //         ...state,
-        //         newMessageText: '',
-        //         massagesData: [...state.massagesData, { id: state.massagesData.length + 1, text: newMessage }]
-        //     };
-        //     return stateCopy;
-        // }
         case ADD_MESSAGE:
             const newMessage = state.newMessageText;
             return {
@@ -38,11 +29,6 @@ const messagesReducer = (state = initialState, action) => {
                 massagesData: [...state.massagesData, { id: state.massagesData.length + 1, text: newMessage }]
             };
 
-        // case UPDATE_NEW_MESSAGE_TEXT: {
-        //     let stateCopy = { ...state };
-        //     stateCopy.newMessageText = action.newText;
-        //     return stateCopy;
-        // }
         case UPDATE_NEW_MESSAGE_TEXT:
             return {
                 ...state,
@@ -54,9 +40,16 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
+// export const addMessageActionCreator = () => ({ type: ADD_MESSAGE })
 
-export const onMessageChangeActionCreator = (text) =>
+// export const onMessageChangeActionCreator = (text) =>
+// ({
+//     type: UPDATE_NEW_MESSAGE_TEXT,
+//     newText: text
+// })
+export const addMessage = () => ({ type: ADD_MESSAGE })
+
+export const onMessageChange = (text) =>
 ({
     type: UPDATE_NEW_MESSAGE_TEXT,
     newText: text

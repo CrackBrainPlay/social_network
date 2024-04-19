@@ -1,4 +1,5 @@
-import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/messagesReducer';
+// import { addMessageActionCreator, onMessageChangeActionCreator } from '../../../Redux/messagesReducer';
+import { addMessage, onMessageChange } from '../../../Redux/messagesReducer';
 import AddMessage from './AddMessage';
 import { connect } from 'react-redux';
 
@@ -8,17 +9,20 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addMessage: () => {
-            dispatch(addMessageActionCreator());
-        },
-        onMessageChange: (text) => {
-            dispatch(onMessageChangeActionCreator(text));
-        }
-    }
-}
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         addMessage: () => {
+//             dispatch(addMessageActionCreator());
+//         },
+//         onMessageChange: (text) => {
+//             dispatch(onMessageChangeActionCreator(text));
+//         }
+//     }
+// }
 
-const AddMessageContainer = connect(mapStateToProps, mapDispatchToProps)(AddMessage);
+const AddMessageContainer = connect(mapStateToProps, {
+    addMessage,
+    onMessageChange
+})(AddMessage);
 
 export default AddMessageContainer;
