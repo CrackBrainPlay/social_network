@@ -3,13 +3,14 @@ import './App.css';
 import style from './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+// import Profile from './components/Profile/Profile';
 import UsersContainer from './components/Users/UsersContainer';
 import Dialogues from './components/Dialogues/Dialogues';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Routes, Route } from 'react-router-dom';
+import ProfilesContainer from './components/Profile/ProfileContainer';
 
 
 const App = (props) => {
@@ -19,8 +20,8 @@ const App = (props) => {
       <Navbar />
       <div className={style.content}>
         <Routes>
-          <Route path="/" element={<Profile />} />
-          <Route path="Profile/*" element={<Profile />} />
+          <Route path="/" element={<ProfilesContainer />} />
+          <Route path="Profile/*" element={<ProfilesContainer />} />
           <Route path="Users/*" element={<UsersContainer />} />
           <Route path="Dialogues/*" element={<Dialogues />} />
           <Route path="News/*" element={<News />} />
