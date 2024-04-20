@@ -21,7 +21,7 @@ const App = (props) => {
       <div className={style.content}>
         <Routes>
           <Route path="/" element={<ProfilesContainer />} />
-          <Route path="Profile/*" element={<ProfilesContainer />} />
+          <Route path="Profile/:userId?" element={<ProfilesContainer />} />
           <Route path="Users/*" element={<UsersContainer />} />
           <Route path="Dialogues/*" element={<Dialogues />} />
           <Route path="News/*" element={<News />} />

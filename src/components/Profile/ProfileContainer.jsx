@@ -4,13 +4,28 @@ import axios from 'axios';
 import Profile from './Profile';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
 import { setUserProfile } from '../../Redux/profileReducer';
+import { useParams } from "react-router-dom";
+
+export function withRouter(Children) {
+
+    return (props) => {
+        const match = { params: useParams() };
+        return <Children {...props} match={match} />
+    }
+
+}
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
+        // debugger;
         // this.props.toggleIsFetching(true);
         // if (this.props.users.length === 0) {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = 2;
+        }
+        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
             .then(response => {
                 // this.props.toggleIsFetching(false);
                 this.props.setUserProfile(response.data);
@@ -51,8 +66,11 @@ const mapStateToProps = (state) => {
     }
 }
 
+const WhitsUrlContainerComponent = withRouter(ProfileContainer)
+
+
 const ProfilesContainer = connect(mapStateToProps, {
     setUserProfile
-})(ProfileContainer);
+})(WhitsUrlContainerComponent);
 
 export default ProfilesContainer;
