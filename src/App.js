@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import style from './App.css';
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 // import Profile from './components/Profile/Profile';
 import UsersContainer from './components/Users/UsersContainer';
@@ -11,12 +11,13 @@ import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { Routes, Route } from 'react-router-dom';
 import ProfilesContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 
 const App = (props) => {
   return (
     <div className='app-wrapper'>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className={style.content}>
         <Routes>
