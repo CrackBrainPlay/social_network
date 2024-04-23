@@ -11,7 +11,8 @@ class UserContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
         if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
+                { withCredentials: true })
                 .then(response => {
                     this.props.toggleIsFetching(false);
                     this.props.setUsers(response.data.items);
@@ -23,7 +24,8 @@ class UserContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
+            { withCredentials: true })
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(response.data.items)
@@ -32,14 +34,12 @@ class UserContainer extends React.Component {
 
     render() {
         return (<>
-            {/* <PreLoader isFetching={this.props.isFetching} /> */}
             <div style={{ backgroundColor: 'white' }}>
                 {this.props.isFetching ? <PreLoader /> : null}
             </div>
 
             <User totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
-                // getUsers={this.props.getUsers}
                 currentPage={this.props.currentPage}
                 onPageChanged={this.onPageChanged}
                 users={this.props.users}

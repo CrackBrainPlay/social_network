@@ -58,11 +58,6 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile
-        // users: state.usersPage.users,
-        // pageSize: state.usersPage.pageSize,
-        // totalUsersCount: state.usersPage.totalUsersCount,
-        // currentPage: state.usersPage.currentPage,
-        // isFetching: state.usersPage.isFetching
     }
 }
 
