@@ -1,35 +1,33 @@
 import { connect } from 'react-redux';
-// import UserAPIComponent from './UserAPIComponent';
 import React from 'react';
-import axios from 'axios';
 import { follow, setUsers, unfollow, setCurrentPage, setTotalUsersCount, toggleIsFetching } from '../../Redux/usersReducer';
 import User from './User';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
+import { usersAPI } from '../../api/api';
+// import axios from 'axios';
+// import UserAPIComponent from './UserAPIComponent';
+
 
 class UserContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
         if (this.props.users.length === 0) {
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-                { withCredentials: true })
-                .then(response => {
-                    this.props.toggleIsFetching(false);
-                    this.props.setUsers(response.data.items);
-                    this.props.setTotalUsersCount(response.data.totalCount);
-                });
+            usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(response => {
+                this.props.toggleIsFetching(false);
+                this.props.setUsers(response.items);
+                this.props.setTotalUsersCount(response.totalCount);
+            });
         }
     }
 
     onPageChanged = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-            { withCredentials: true })
-            .then(response => {
-                this.props.toggleIsFetching(false);
-                this.props.setUsers(response.data.items)
-            });
+        usersAPI.getUsers(pageNumber, this.props.pageSize).then(response => {
+            this.props.toggleIsFetching(false);
+            this.props.setUsers(response.items)
+        });
     }
 
     render() {
@@ -61,29 +59,6 @@ const mapStateToProps = (state) => {
         // isFetching: state.usersPage.isFetching
     }
 }
-
-// const mapDipatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId));
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId));
-//         },
-//         setUsers: (users) => {
-//             dispatch(setUsersAC(users));
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber));
-//         },
-//         setTotalUsersCount: (totalCount) => {
-//             dispatch(setTotalUsersCountAC(totalCount));
-//         },
-//         toggleIsFetching: (IsFetching) => {
-//             dispatch(toggleIsFetchingAC(IsFetching));
-//         }
-//     }
-// }
 
 const UsersContainer = connect(mapStateToProps,
     {
