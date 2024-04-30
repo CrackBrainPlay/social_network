@@ -5,6 +5,7 @@ import PreLoader from '../AllComponents/PreLoader/PreLoader';
 import { getUserProfile } from '../../Redux/profileReducer';
 import { useParams } from "react-router-dom";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 export function withRouter(Children) {
 
@@ -24,9 +25,7 @@ class ProfileContainer extends React.Component {
         }
         this.props.getUserProfile(userId);
     }
-
     render() {
-
         return (<>
             <div style={{ backgroundColor: 'white' }}>
                 {this.props.isFetching ? <PreLoader /> : null}
@@ -38,28 +37,20 @@ class ProfileContainer extends React.Component {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
-// const mapStateToPropsForRedirect = (state) => {
-//     return {
-//         isAuth: state.auth.isAuth
-//     }
-// }
-
-// AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);
-
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
     }
 }
 
-const WhitsUrlContainerComponent = withRouter(AuthRedirectComponent)
+export default compose(
+    connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect)
+    (ProfileContainer);
 
-
-const ProfilesContainer = connect(mapStateToProps, {
-    getUserProfile
-    // setUserProfile
-})(WhitsUrlContainerComponent);
-
-export default ProfilesContainer;
+// compose(connect(mapStateToProps, {getUserProfile}))(ProfileContainer)
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+// const WhitsUrlContainerComponent = withRouter(AuthRedirectComponent)
+// const ProfilesContainer = connect(mapStateToProps, {
+//     getUserProfile
+// })(WhitsUrlContainerComponent);
+// export default ProfilesContainer;

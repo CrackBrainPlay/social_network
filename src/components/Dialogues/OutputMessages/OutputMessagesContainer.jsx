@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import OutputMessages from './OutputMessages';
 import PreLoader from '../../AllComponents/PreLoader/PreLoader';
 import { withAuthRedirect } from '../../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class OutputMessageContainer extends React.Component {
     render() {
@@ -16,7 +17,6 @@ class OutputMessageContainer extends React.Component {
     }
 }
 
-const AuthRedirectComponent = withAuthRedirect(OutputMessageContainer);
 
 const mapStateToProps = (state) => {
     return {
@@ -24,6 +24,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-const OutputMessagesContainer = connect(mapStateToProps, { OutputMessages })(AuthRedirectComponent);
+// compose(connect(mapStateToProps, { OutputMessages }) ,withAuthRedirect )(OutputMessageContainer)
 
-export default OutputMessagesContainer;
+// const AuthRedirectComponent = withAuthRedirect(OutputMessageContainer);
+
+// const OutputMessagesContainer = connect(mapStateToProps, { OutputMessages })(AuthRedirectComponent);
+
+// export default OutputMessagesContainer;
+export default compose(
+    connect(mapStateToProps, { OutputMessages }), withAuthRedirect)
+    (OutputMessageContainer);
