@@ -24,11 +24,11 @@ export const usersAPI = {
         return instance.get(`auth/me`)
     },
 
-    getFollow(id) {
+    follow(id) {
         return instance.delete(`follow/${id}`)
     },
 
-    getUnfollow(id) {
+    unfollow(id) {
         return instance.post(`follow/${id}`, {})
     }
 
