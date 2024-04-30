@@ -3,7 +3,8 @@ import OutputMessages from './OutputMessages';
 
 const mapStateToProps = (state) => {
     return {
-        massagesData: state.messagesPage.massagesData
+        massagesData: state.messagesPage.massagesData,
+        isAuth: state.auth.isAuth
     }
 }
 

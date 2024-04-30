@@ -9,6 +9,7 @@ import Dialogues from './components/Dialogues/Dialogues';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
+import Login from './components/Login/Login'
 import { Routes, Route } from 'react-router-dom';
 import ProfilesContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -28,6 +29,7 @@ const App = (props) => {
           <Route path="News/*" element={<News />} />
           <Route path="Music/*" element={<Music />} />
           <Route path="Settings/*" element={<Settings />} />
+          <Route path="Login/*" element={<Login />} />
         </Routes>
       </div>
       <footer></footer>
