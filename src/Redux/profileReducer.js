@@ -54,7 +54,7 @@ export const onPostChange = (text) =>
 
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 
-export const profileSuccess = (userId) => {
+export const getUserProfile = (userId) => {
     return (dispatch) => {
         usersAPI.getProfile(userId)
             .then(response => {

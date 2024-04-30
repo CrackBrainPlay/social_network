@@ -20,10 +20,6 @@ export const usersAPI = {
         return instance.get(`profile/${userId}`)
     },
 
-    getAuht() {
-        return instance.get(`auth/me`)
-    },
-
     follow(id) {
         return instance.delete(`follow/${id}`)
     },
@@ -32,4 +28,11 @@ export const usersAPI = {
         return instance.post(`follow/${id}`, {})
     }
 
+}
+
+export const authAPI = {
+
+    getAuht() {
+        return instance.get(`auth/me`)
+    }
 }

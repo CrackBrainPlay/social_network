@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import axios from 'axios';
 import Profile from './Profile';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
-import { profileSuccess } from '../../Redux/profileReducer';
+import { getUserProfile } from '../../Redux/profileReducer';
 import { useParams } from "react-router-dom";
 // import { usersAPI } from '../../api/api';
 
@@ -23,7 +23,7 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        this.props.profileSuccess(userId);
+        this.props.getUserProfile(userId);
     }
 
     render() {
@@ -48,7 +48,7 @@ const WhitsUrlContainerComponent = withRouter(ProfileContainer)
 
 
 const ProfilesContainer = connect(mapStateToProps, {
-    profileSuccess
+    getUserProfile
     // setUserProfile
 })(WhitsUrlContainerComponent);
 
