@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 import Profile from './Profile';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
 import { getUserProfile } from '../../Redux/profileReducer';
-import { Navigate, useParams } from "react-router-dom";
-// import { usersAPI } from '../../api/api';
+import { useParams } from "react-router-dom";
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 export function withRouter(Children) {
 
@@ -27,9 +26,7 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if (!this.props.isAuth) {
-            return <Navigate to="/login" />;
-        }
+
         return (<>
             <div style={{ backgroundColor: 'white' }}>
                 {this.props.isFetching ? <PreLoader /> : null}
@@ -41,14 +38,23 @@ class ProfileContainer extends React.Component {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
+// const mapStateToPropsForRedirect = (state) => {
+//     return {
+//         isAuth: state.auth.isAuth
+//     }
+// }
+
+// AuthRedirectComponent = connect(mapStateToPropsForRedirect)(AuthRedirectComponent);
+
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
     }
 }
 
-const WhitsUrlContainerComponent = withRouter(ProfileContainer)
+const WhitsUrlContainerComponent = withRouter(AuthRedirectComponent)
 
 
 const ProfilesContainer = connect(mapStateToProps, {
