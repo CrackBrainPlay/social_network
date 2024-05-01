@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
-import { getUserProfile } from '../../Redux/profileReducer';
+import { getStatus, getUserProfile, updateStatus } from '../../Redux/profileReducer';
 import { useParams } from "react-router-dom";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -21,9 +21,10 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
-            userId = 2;
+            userId = 31129;
         }
         this.props.getUserProfile(userId);
+        this.props.getStatus(userId);
     }
     render() {
         return (<>
@@ -31,7 +32,9 @@ class ProfileContainer extends React.Component {
                 {this.props.isFetching ? <PreLoader /> : null}
             </div>
             <Profile {...this.props}
-                profile={this.props.profile} />
+                profile={this.props.profile}
+                status={this.props.status}
+                updateStatus={this.props.updateStatus} />
         </>
         )
     }
@@ -40,17 +43,10 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        status: state.profilePage.status
     }
 }
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile }), withRouter, withAuthRedirect)
+    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }), withRouter, withAuthRedirect)
     (ProfileContainer);
-
-// compose(connect(mapStateToProps, {getUserProfile}))(ProfileContainer)
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-// const WhitsUrlContainerComponent = withRouter(AuthRedirectComponent)
-// const ProfilesContainer = connect(mapStateToProps, {
-//     getUserProfile
-// })(WhitsUrlContainerComponent);
-// export default ProfilesContainer;

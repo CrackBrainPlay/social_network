@@ -31,7 +31,8 @@ const ProfileInfo = (props) => {
                         id пользователя: {props.profile.userId}
                     </li>
                 </ul>
-                <ProfileStatus status={'Hello my friend'} />
+                <ProfileStatus status={props.status}
+                    updateStatus={props.updateStatus} />
             </div>
         </div>
     );
