@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 import PreLoader from '../../AllComponents/PreLoader/PreLoader';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -11,6 +12,7 @@ const ProfileInfo = (props) => {
         <div className={style.content}>
             {/* <img className={style.img} src={(props.profile.photos.large === null) ? 'img/avatar.png' : props.profile.photo.large} alt='' /> */}
             <img className={style.img} src={props.profile.photos.large} alt='' />
+
             <div className={style.boxInfo}>
                 <ul>
                     <li>
@@ -29,6 +31,7 @@ const ProfileInfo = (props) => {
                         id пользователя: {props.profile.userId}
                     </li>
                 </ul>
+                <ProfileStatus status={'Hello my friend'} />
             </div>
         </div>
     );

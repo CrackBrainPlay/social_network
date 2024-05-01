@@ -1,0 +1,5 @@
+.content {
+    background-color: #f1f2f6;
+    display: grid;
+    grid-template-columns: 30% 60%;
+}
