@@ -1,30 +1,46 @@
 import React from 'react';
 import style from './AddPost.module.css';
-// import { addPostActionCreator, onPostChangeActionCreator } from '../../../Redux/profileReducer';
-// import { useParams } from 'react-router-dom';
+import { Field, reduxForm } from 'redux-form';
 
+const AddPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div className={style.dialogs}>
+                <Field
+                    placeholder={"Enter your message..."}
+                    name={'newPostText'}
+                    component={'textarea'}
+                    className={style.dialogs_items} />
+                <div>
+                    <button className={style.item}>
+                        Add Post
+                    </button>
+                </div>
+            </div>
+        </form>
+    )
+}
 
+const AddPostFormRedux = reduxForm({
+    form: 'addPostForm',
+    fields: ['message']
+})(AddPostForm);
 
 const AddPost = (props) => {
-    // debugger;
-    let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
-        // props.dispatch(addPostActionCreator());
+    let onAddPost = (data) => {
+        debugger;
+        props.addPost(data);
     }
 
-
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-        // let action = onPostChangeActionCreator(text);
-        // props.dispatch(action);
+    const onSubmit = (formData) => {
+        onAddPost(formData.newPostText);
+        formData.newPostText = '';
     }
 
     return (
         <div>
-            <div className={style.dialogs}>
+            {/* <div className={style.dialogs}>
                 <textarea placeholder='Enter your message...'
                     className={style.dialogs_items}
                     onChange={onPostChange}
@@ -33,7 +49,8 @@ const AddPost = (props) => {
             </div>
             <div className={style.box}>
                 <button className={style.item} onClick={onAddPost}>Add Post</button>
-            </div>
+            </div> */}
+            <AddPostFormRedux onSubmit={onSubmit} />
         </div>
     )
 
