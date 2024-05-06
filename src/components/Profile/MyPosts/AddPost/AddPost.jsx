@@ -1,6 +1,10 @@
 import React from 'react';
 import style from './AddPost.module.css';
 import { Field, reduxForm } from 'redux-form';
+import { maxLengthCreator, required } from '../../../../utils/validators/validators';
+import { Textarea } from '../../../AllComponents/FormControls/FormsControls';
+
+const maxLength = maxLengthCreator(10);
 
 const AddPostForm = (props) => {
     return (
@@ -9,8 +13,10 @@ const AddPostForm = (props) => {
                 <Field
                     placeholder={"Enter your message..."}
                     name={'newPostText'}
-                    component={'textarea'}
-                    className={style.dialogs_items} />
+                    // component={'textarea'}
+                    component={Textarea}
+                    // className={style.dialogs_items}
+                    validate={[required, maxLength]} />
                 <div>
                     <button className={style.item}>
                         Add Post
@@ -29,7 +35,6 @@ const AddPostFormRedux = reduxForm({
 const AddPost = (props) => {
 
     let onAddPost = (data) => {
-        debugger;
         props.addPost(data);
     }
 
