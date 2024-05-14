@@ -37,19 +37,31 @@ export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_D
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 
-export const getAuthUserData = () => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        authAPI.getAuht()
-            .then(response => {
-                dispatch(toggleIsFetching(false));
-                if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data;
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-            });
-    }
+export const getAuthUserData = () => (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    return authAPI.getAuht()
+        .then(response => {
+            dispatch(toggleIsFetching(false));
+            if (response.data.resultCode === 0) {
+                let { id, email, login } = response.data.data;
+                dispatch(setAuthUserData(id, email, login, true));
+            }
+        });
 }
+
+// export const getAuthUserData = () => {
+//     return (dispatch) => {
+//         dispatch(toggleIsFetching(true));
+//         authAPI.getAuht()
+//             .then(response => {
+//                 dispatch(toggleIsFetching(false));
+//                 if (response.data.resultCode === 0) {
+//                     let { id, email, login } = response.data.data;
+//                     dispatch(setAuthUserData(id, email, login, true));
+//                 }
+//             });
+//     }
+// }
 export const login = (email, password, rememberMe) => {
     return (dispatch) => {
         // debugger;
