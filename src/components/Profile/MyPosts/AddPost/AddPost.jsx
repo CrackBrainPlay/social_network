@@ -7,15 +7,14 @@ import { Textarea } from '../../../AllComponents/FormControls/FormsControls';
 const maxLength = maxLengthCreator(10);
 
 const AddPostForm = (props) => {
+    // console.log("Rednder AddPostForm");
     return (
         <form onSubmit={props.handleSubmit}>
             <div className={style.dialogs}>
                 <Field
                     placeholder={"Enter your message..."}
                     name={'newPostText'}
-                    // component={'textarea'}
                     component={Textarea}
-                    // className={style.dialogs_items}
                     validate={[required, maxLength]} />
                 <div>
                     <button className={style.item}>

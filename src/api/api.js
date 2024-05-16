@@ -25,7 +25,6 @@ export const usersAPI = {
     },
 
     getProfile(userId) {
-        console.warn('Obsolute method. Please use profileAPI object')
         return profileAPI.getProfile(userId);
     },
 
