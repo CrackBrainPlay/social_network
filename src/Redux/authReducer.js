@@ -1,7 +1,7 @@
 import { authAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const SET_USER_DATA = 'social_network/authReducer/SET_USER_DATA';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 let initialState = {
@@ -37,60 +37,36 @@ export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_D
 
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 
-export const getAuthUserData = () => (dispatch) => {
+export const getAuthUserData = () => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    return authAPI.getAuht()
-        .then(response => {
-            dispatch(toggleIsFetching(false));
-            if (response.data.resultCode === 0) {
-                let { id, email, login } = response.data.data;
-                dispatch(setAuthUserData(id, email, login, true));
-            }
-        });
-}
-
-// export const getAuthUserData = () => {
-//     return (dispatch) => {
-//         dispatch(toggleIsFetching(true));
-//         authAPI.getAuht()
-//             .then(response => {
-//                 dispatch(toggleIsFetching(false));
-//                 if (response.data.resultCode === 0) {
-//                     let { id, email, login } = response.data.data;
-//                     dispatch(setAuthUserData(id, email, login, true));
-//                 }
-//             });
-//     }
-// }
-export const login = (email, password, rememberMe) => {
-    return (dispatch) => {
-        // debugger;
-        dispatch(toggleIsFetching(true));
-        authAPI.login(email, password, rememberMe)
-            .then(response => {
-                dispatch(toggleIsFetching(false));
-                if (response.data.resultCode === 0) {
-                    dispatch(getAuthUserData());
-                } else {
-                    // let action = stopSubmit("login", { _error: "Common error" });
-                    let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                    console.log(response.data.messages[0]);
-                    dispatch(stopSubmit("login", { _error: message }));
-                }
-            });
+    let response = await authAPI.getAuht()
+    dispatch(toggleIsFetching(false));
+    if (response.data.resultCode === 0) {
+        let { id, email, login } = response.data.data;
+        dispatch(setAuthUserData(id, email, login, true));
     }
 }
 
-export const logout = () => {
-    return (dispatch) => {
-        dispatch(toggleIsFetching(true));
-        authAPI.logout()
-            .then(response => {
-                dispatch(toggleIsFetching(false));
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthUserData(null, null, null, false));
-                }
-            });
+
+export const login = (email, password, rememberMe) => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    // let response = await authAPI.login(email, password, false)
+    let response = await authAPI.login(email, password, rememberMe)
+    if (response.data.resultCode === 0) {
+        dispatch(getAuthUserData());
+    } else {
+        let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+        console.log(response.data.messages[0]);
+        dispatch(stopSubmit("login", { _error: message }));
+    }
+}
+
+export const logout = () => async (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    let response = await authAPI.logout()
+    dispatch(toggleIsFetching(false));
+    if (response.data.resultCode === 0) {
+        dispatch(setAuthUserData(null, null, null, false));
     }
 }
 

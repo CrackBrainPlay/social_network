@@ -1,0 +1,13 @@
+.box {
+    display: grid;
+}
+
+.selectedPage {
+    font-weight: 600;
+    color: #AE0018;
+}
+
+.box img {
+    height: 100px;
+    width: 100px;
+}

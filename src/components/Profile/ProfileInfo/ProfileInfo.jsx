@@ -1,14 +1,12 @@
 import React from 'react';
 import style from './ProfileInfo.module.css';
 import PreLoader from '../../AllComponents/PreLoader/PreLoader';
-// import ProfileStatus from './ProfileStatus/ProfileStatus';
 import ProfileStatusWithHooks from './ProfileStatus/ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
         return <PreLoader />
     }
-    // debugger;
     return (
         <div className={style.content}>
             {/* <img className={style.img} src={(props.profile.photos.large === null) ? 'img/avatar.png' : props.profile.photo.large} alt='' /> */}

@@ -1,9 +1,7 @@
 import React from 'react';
 import './App.css';
 import style from './App.css';
-// import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-// import Profile from './components/Profile/Profile';
 import UsersContainer from './components/Users/UsersContainer';
 import Dialogues from './components/Dialogues/Dialogues';
 import News from './components/News/News';
@@ -13,7 +11,6 @@ import Login from './components/Login/Login'
 import { Routes, Route } from 'react-router-dom';
 import ProfilesContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-// import { getAuthUserData } from './Redux/authReducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { useParams } from "react-router-dom";
@@ -30,7 +27,6 @@ export function withRouter(Children) {
 }
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.initializeApp();
   }
@@ -40,7 +36,6 @@ class App extends React.Component {
       return <PreLoader />
 
     return (
-
       <div className='app-wrapper'>
         <HeaderContainer />
         <Navbar />
@@ -58,7 +53,6 @@ class App extends React.Component {
         </div>
         <footer></footer>
       </div>
-
     )
   }
 }
@@ -67,9 +61,4 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-// export default App;
-
-// export default connect(null, { getAuthUserData })(App);
-
-// export default compose(connect(null, { getAuthUserData }), withRouter)(App);
 export default compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
