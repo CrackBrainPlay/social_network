@@ -16,6 +16,9 @@ import { compose } from 'redux';
 import { useParams } from "react-router-dom";
 import { initializeApp } from './Redux/appReducer';
 import PreLoader from './components/AllComponents/PreLoader/PreLoader';
+import store from './Redux/reduxStore.js';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
 export function withRouter(Children) {
@@ -61,4 +64,17 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-export default compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
+// export default compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
+const AppContainer = compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
+
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  )
+}
+
+export default MainApp;
