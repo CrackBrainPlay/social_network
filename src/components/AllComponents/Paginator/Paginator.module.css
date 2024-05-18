@@ -22,5 +22,6 @@
 }
 
 .button {
-    width: 52px;
+    width: 60px;
+    /* text-justify: center; */
 }

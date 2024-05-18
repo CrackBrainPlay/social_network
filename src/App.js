@@ -2,14 +2,7 @@ import React from 'react';
 import './App.css';
 import style from './App.css';
 import Navbar from './components/Navbar/Navbar';
-import UsersContainer from './components/Users/UsersContainer';
-import Dialogues from './components/Dialogues/Dialogues';
-import News from './components/News/News';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
-import Login from './components/Login/Login'
 import { Routes, Route } from 'react-router-dom';
-import ProfilesContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -19,6 +12,15 @@ import PreLoader from './components/AllComponents/PreLoader/PreLoader';
 import store from './Redux/reduxStore.js';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { withSuspense } from './hoc/withSuspense.js';
+
+const ProfileComponent = withSuspense(React.lazy(() => import('./components/Profile/ProfileContainer.jsx')));
+const UsersComponent = withSuspense(React.lazy(() => import('./components/Users/UsersContainer.jsx')));
+const DialoguesComponent = withSuspense(React.lazy(() => import('./components/Dialogues/Dialogues.jsx')));
+const NewsComponent = withSuspense(React.lazy(() => import('./components/News/News.jsx')));
+const MusicComponent = withSuspense(React.lazy(() => import('./components/Music/Music.jsx')));
+const SettingsComponent = withSuspense(React.lazy(() => import('./components/Settings/Settings.jsx')));
+const LoginComponent = withSuspense(React.lazy(() => import('./components/Login/Login.jsx')));
 
 
 export function withRouter(Children) {
@@ -44,14 +46,14 @@ class App extends React.Component {
         <Navbar />
         <div className={style.content}>
           <Routes>
-            <Route path="/" element={<ProfilesContainer />} />
-            <Route path="Profile/:userId?" element={<ProfilesContainer />} />
-            <Route path="Users/*" element={<UsersContainer />} />
-            <Route path="Dialogues/*" element={<Dialogues />} />
-            <Route path="News/*" element={<News />} />
-            <Route path="Music/*" element={<Music />} />
-            <Route path="Settings/*" element={<Settings />} />
-            <Route path="Login/*" element={<Login />} />
+            <Route path="/" element={<ProfileComponent />} />
+            <Route path="Profile/:userId?" element={<ProfileComponent />} />
+            <Route path="Users/*" element={<UsersComponent />} />
+            <Route path="Dialogues/*" element={<DialoguesComponent />} />
+            <Route path="News/*" element={<NewsComponent />} />
+            <Route path="Music/*" element={<MusicComponent />} />
+            <Route path="Settings/*" element={<SettingsComponent />} />
+            <Route path="Login/*" element={<LoginComponent />} />
           </Routes>
         </div>
         <footer></footer>

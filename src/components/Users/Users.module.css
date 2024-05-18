@@ -11,3 +11,14 @@
     height: 100px;
     width: 100px;
 }
+
+.component {
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    /* начальное значение */
+}
+
+.component.visible {
+    opacity: 1;
+    /* конечное значение */
+}
