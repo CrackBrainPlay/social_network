@@ -2,3 +2,25 @@
     font-weight: 600;
     color: #AE0018;
 }
+
+.content {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 0 auto;
+}
+
+.box {
+    width: 230px;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.fakebox {
+    width: 52px;
+}
+
+.button {
+    width: 52px;
+}
