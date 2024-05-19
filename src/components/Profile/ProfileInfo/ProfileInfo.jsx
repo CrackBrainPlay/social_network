@@ -10,8 +10,9 @@ const ProfileInfo = (props) => {
     return (
         <div className={style.content}>
             {/* <img className={style.img} src={(props.profile.photos.large === null) ? 'img/avatar.png' : props.profile.photo.large} alt='' /> */}
-            <img className={style.img} src={props.profile.photos.large} alt='' />
-
+            <img className={style.img} src={props.profile.photos.large || 'img/avatar.png'} alt='' />
+            {props.isOwner && <input type={"file"} />}
+            {/* <img className={style.img} src={props.profile.photos.large} alt='' /> */}
             <div className={style.boxInfo}>
                 <ul>
                     <li>

@@ -17,7 +17,12 @@ export function withRouter(Children) {
 
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
+    constructor(props) {
+        super(props);
+        this.userRender = this.userRender.bind(this);
+    }
+
+    userRender() {
         let id = this.props.match.params.id;
         if (!id) {
             id = this.props.authorizedUserid;
@@ -25,12 +30,23 @@ class ProfileContainer extends React.Component {
         this.props.getUserProfile(id);
         this.props.getStatus(id);
     }
+
+    componentDidMount() {
+        this.userRender();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.match.params.id !== prevProps.match.params.id) {
+            this.userRender();
+        }
+    }
     render() {
         return (<>
             <div style={{ backgroundColor: 'white' }}>
                 {this.props.isFetching ? <PreLoader /> : null}
             </div>
             <Profile {...this.props}
+                isOwner={!this.props.match.params.id}
                 profile={this.props.profile}
                 status={this.props.status}
                 updateStatus={this.props.updateStatus} />
