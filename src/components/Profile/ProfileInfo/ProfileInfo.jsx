@@ -7,11 +7,17 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <PreLoader />
     }
+    const onMainPhotoSelected = (e) => {
+        if (e.target.files.length) {
+            props.savePhoto(e.target.files[0]);
+        }
+    }
+
     return (
         <div className={style.content}>
             {/* <img className={style.img} src={(props.profile.photos.large === null) ? 'img/avatar.png' : props.profile.photo.large} alt='' /> */}
             <img className={style.img} src={props.profile.photos.large || 'img/avatar.png'} alt='' />
-            {props.isOwner && <input type={"file"} />}
+            {props.isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
             {/* <img className={style.img} src={props.profile.photos.large} alt='' /> */}
             <div className={style.boxInfo}>
                 <ul>

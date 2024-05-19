@@ -2,6 +2,7 @@ import React from 'react';
 // import React, { Component } from 'react';
 import style from './OutputPosts.module.css';
 import Posts from '../Posts/Posts';
+// import PreLoader from '../../../AllComponents/PreLoader/PreLoader';
 
 // window.props = [];
 
@@ -35,8 +36,9 @@ import Posts from '../Posts/Posts';
 // export default OutputPosts;
 
 const OutputPosts = React.memo((props) => {
-    console.log("Render OutputPosts");
-    console.log(props);
+    // console.log("Render OutputPosts");
+    // console.log(props);
+
     let postsElement = props.postsData
         .map(post => (<Posts message={post.text} counterLikes={post.counterLikes} key={Math.random()} />))
     // .map(post => (<Posts message={post.text} counterLikes={post.counterLikes} key={post.id} />))

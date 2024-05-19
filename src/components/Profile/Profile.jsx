@@ -28,8 +28,9 @@ const Profile = (props) => {
             <ProfileInfo profile={props.profile}
                 status={props.status}
                 updateStatus={props.updateStatus}
-                isOwner={props.isOwner} />
-            <MyPosts />
+                isOwner={props.isOwner}
+                savePhoto={props.savePhoto} />
+            <MyPosts profile={props.profile} />
         </div>
     );
 }

@@ -6,6 +6,7 @@ import OutputPostsContainer from './OutputPosts/OutputPostsContainer';
 
 const MyPosts = React.memo((props) => {
     console.log("Render MyPosts");
+    // debugger;
     return (
         <div className={style.content} >
             <div className={style.item}>
