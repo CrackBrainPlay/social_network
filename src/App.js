@@ -1,18 +1,15 @@
 import React from 'react';
+import { connect, Provider } from 'react-redux';
+import { compose } from 'redux';
+import { useParams, Routes, Route, BrowserRouter } from "react-router-dom";
+import { initializeApp } from './Redux/appReducer';
+import { withSuspense } from './hoc/withSuspense.js';
 import './App.css';
 import style from './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { Routes, Route } from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { useParams } from "react-router-dom";
-import { initializeApp } from './Redux/appReducer';
 import PreLoader from './components/AllComponents/PreLoader/PreLoader';
 import store from './Redux/reduxStore.js';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { withSuspense } from './hoc/withSuspense.js';
 
 const ProfileComponent = withSuspense(React.lazy(() => import('./components/Profile/ProfileContainer.jsx')));
 const UsersComponent = withSuspense(React.lazy(() => import('./components/Users/UsersContainer.jsx')));
@@ -66,12 +63,11 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized
 })
 
-// export default compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
 const AppContainer = compose(connect(mapStateToProps, { initializeApp }), withRouter)(App);
 
 const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>
