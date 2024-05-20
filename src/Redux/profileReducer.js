@@ -110,7 +110,6 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
         dispatch(getUserProfile(userId));
     } else {
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-        // console.log(response.data.messages[0]);
         dispatch(stopSubmit("profile", { _error: message }));
         // return Promise.reject(message);
     }
