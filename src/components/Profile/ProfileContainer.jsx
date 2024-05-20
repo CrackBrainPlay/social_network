@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import PreLoader from '../AllComponents/PreLoader/PreLoader';
-import { getStatus, getUserProfile, savePhoto, updateStatus } from '../../Redux/profileReducer';
+import { getStatus, getUserProfile, savePhoto, saveProfile, updateStatus } from '../../Redux/profileReducer';
 import { useParams } from "react-router-dom";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
@@ -40,6 +40,11 @@ class ProfileContainer extends React.Component {
             this.userRender();
         }
     }
+
+    saveProfile() {
+
+    }
+
     render() {
         return (<>
             <div style={{ backgroundColor: 'white' }}>
@@ -66,5 +71,5 @@ const mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto }), withRouter, withAuthRedirect)
+    connect(mapStateToProps, { getUserProfile, getStatus, updateStatus, savePhoto, saveProfile }), withRouter, withAuthRedirect)
     (ProfileContainer);
