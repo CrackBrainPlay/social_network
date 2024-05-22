@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import style from './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HeaderContainer from './components/Header/HeaderContainer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
@@ -32,8 +32,17 @@ export function withRouter(Children) {
 }
 
 class App extends React.Component {
+  catchAllUnhandledErrors = (promiseRejectionEnevt) => {
+    alert("Some error");
+  }
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -46,7 +55,8 @@ class App extends React.Component {
         <Navbar />
         <div className={style.content}>
           <Routes>
-            <Route path="/" element={<ProfileComponent />} />
+            <Route path="/" element={<Navigate to={"/profile"} />} />
+            {/* <Route path="/" element={<ProfileComponent />} /> */}
             <Route path="Profile/:userId?" element={<ProfileComponent />} />
             <Route path="Users/*" element={<UsersComponent />} />
             <Route path="Dialogues/*" element={<DialoguesComponent />} />
@@ -54,6 +64,7 @@ class App extends React.Component {
             <Route path="Music/*" element={<MusicComponent />} />
             <Route path="Settings/*" element={<SettingsComponent />} />
             <Route path="Login/*" element={<LoginComponent />} />
+            <Route path="*" element={<div>404 NOT FOUND</div>} />
           </Routes>
         </div>
         <footer></footer>

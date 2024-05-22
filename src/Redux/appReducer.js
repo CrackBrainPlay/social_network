@@ -1,9 +1,5 @@
-// import { authAPI } from "../api/api";
 import { getAuthUserData } from "./authReducer";
-// import { initialize, stopSubmit } from "redux-form";
 
-// const SET_USER_DATA = 'SET_USER_DATA';
-// const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 let initialState = {
@@ -16,7 +12,6 @@ const appReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case INITIALIZED_SUCCESS:
-            // debugger;
             return {
                 ...state,
                 initialized: true
@@ -29,11 +24,8 @@ const appReducer = (state = initialState, action) => {
 
 export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS })
 
-// export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
-
 export const initializeApp = () => (dispatch) => {
     let promise = dispatch(getAuthUserData());
-    // debugger;
     promise.then(() => {
         dispatch(initializedSuccess());
     });
